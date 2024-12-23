@@ -17,7 +17,7 @@ spec:
         api: external
     spec:
       containers:
-      - image: toanml/udagram-frontend:v12
+      - image: toanml/udagram-frontend:v2
         name: frontend
         imagePullPolicy: Always          
         ports:
