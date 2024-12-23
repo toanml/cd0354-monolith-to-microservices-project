@@ -15,4 +15,4 @@ services:
   frontend:
     build:
       context: ./udagram-frontend
-    image: toanml/udagram-frontend:local
+    image: toanml/udagram-frontend:v2
