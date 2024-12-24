@@ -4,7 +4,7 @@ metadata:
   name: env-config
 data:
   POSTGRES_USERNAME: postgres
-  POSTGRES_PASSWORD: 6nZTRzJDCx4AT2Nurbr1
+  POSTGRES_PASSWORD: xxxx
   POSTGRES_HOST: mlt.cvabo8b23xdn.us-east-1.rds.amazonaws.com
   POSTGRES_DB: mlt
   AWS_BUCKET: mltbucket975633979228
