@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-feed
-        image: docker.io/toanml/udagram-api-feed:v1
+        image: docker.io/toanml/udagram-api-feed:lastest
         ports:
         - containerPort: 80
         resources:
@@ -22,7 +22,27 @@ spec:
             cpu: 500m
           requests:
             cpu: 200m
-
+        env:
+          - name: POSTGRES_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_USERNAME
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: POSTGRES_HOST
+          - name: POSTGRES_DB
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: POSTGRES_DB
 ---
 apiVersion: v1
 kind: Service

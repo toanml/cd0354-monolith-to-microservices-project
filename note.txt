@@ -1,0 +1,33 @@
+docker build --platform=linux/amd64 -t udagram-api-feed ./udagram-api-feed 
+docker tag udagram-api-feed toanml/udagram-api-feed:v8
+docker push toanml/udagram-api-feed:v8
+kubectl set image deployment backend-feed backend-feed=toanml/udagram-api-feed:v8
+
+
+docker build --platform=linux/amd64 -t udagram-api-user ./udagram-api-user
+docker tag udagram-api-user toanml/udagram-api-user:v3
+docker push toanml/udagram-api-user:v3
+kubectl set image deployment backend-user backend-user=toanml/udagram-api-user:v3
+
+docker build --platform=linux/amd64 -t udagram-frontend ./udagram-frontend
+docker tag udagram-api-user toanml/udagram-frontend:v3
+docker push toanml/udagram-frontend:v3
+kubectl set image deployment frontend frontend=toanml/udagram-frontend:v3
+
+
+kubectl set image deployment reverseproxy reverseproxy=toanml/udagram-reverseproxy:v3
+
+export const config = {
+  'username': 'postgres', //process.env.POSTGRES_USERNAME,
+  'password': '6nZTRzJDCx4AT2Nurbr1', //process.env.POSTGRES_PASSWORD,
+  'database': 'mlt', //process.env.POSTGRES_DB,
+  'host': 'mlt.cvabo8b23xdn.us-east-1.rds.amazonaws.com', //process.env.POSTGRES_HOST,
+  'dialect': 'postgres',
+  'aws_region': 'us-east-1', //process.env.AWS_REGION,
+  'aws_profile': 'default', //process.env.AWS_PROFILE,
+  'aws_media_bucket': 'mltbucket975633979228', //process.env.AWS_BUCKET,
+  'url': '', //process.env.URL,
+  'jwt': {
+    'secret': process.env.JWT_SECRET,
+  },
+};

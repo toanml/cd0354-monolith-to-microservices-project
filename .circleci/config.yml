@@ -22,17 +22,17 @@ jobs:
 
             echo "--------- The images is Building ------------"
 
-            docker build -t udagram-api-feed ./udagram-api-feed
-            docker tag udagram-api-feed toanml/udagram-api-feed:v2
+            docker build --platform=linux/amd64 -t udagram-api-feed ./udagram-api-feed
+            docker tag udagram-api-feed toanml/udagram-api-feed:lastest
 
-            docker build -t udagram-api-user ./udagram-api-user
-            docker tag udagram-api-user toanml/udagram-api-user:v2
+            docker build --platform=linux/amd64 -t udagram-api-user ./udagram-api-user
+            docker tag udagram-api-user toanml/udagram-api-user:lastest
             
-            docker build -t udagram-frontend ./udagram-frontend
-            docker tag udagram-frontend toanml/udagram-frontend:v2
+            docker build --platform=linux/amd64 -t udagram-frontend ./udagram-frontend
+            docker tag udagram-frontend toanml/udagram-frontend:lastest
 
-            docker build -t udagram-reverseproxy ./udagram-reverseproxy
-            docker tag udagram-reverseproxy toanml/udagram-reverseproxy:v2
+            docker build --platform=linux/amd64 -t udagram-reverseproxy ./udagram-reverseproxy
+            docker tag udagram-reverseproxy toanml/udagram-reverseproxy:lastest
 
             echo "-------- All images succesfully built----------"
 
@@ -42,10 +42,10 @@ jobs:
 
             echo "-------------- Pushing images to dockerhub-------"
 
-            docker push toanml/udagram-api-feed:v2
-            docker push toanml/udagram-api-user:v2
-            docker push toanml/udagram-frontend:v2
-            docker push toanml/udagram-reverseproxy:v2
+            docker push toanml/udagram-api-feed:lastest
+            docker push toanml/udagram-api-user:lastest
+            docker push toanml/udagram-frontend:lastest
+            docker push toanml/udagram-reverseproxy:lastest
 
 workflows:
   default:

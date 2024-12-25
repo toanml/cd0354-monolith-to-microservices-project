@@ -5,7 +5,7 @@ metadata:
 data:
   POSTGRES_USERNAME: postgres
   POSTGRES_PASSWORD: xxxx
-  POSTGRES_HOST: mlt.cvabo8b23xdn.us-east-1.rds.amazonaws.com
+  POSTGRES_HOST: mlt.cmmm94axlnxx.us-east-1.rds.amazonaws.com
   POSTGRES_DB: mlt
   AWS_BUCKET: mltbucket975633979228
   AWS_REGION: us-east-1

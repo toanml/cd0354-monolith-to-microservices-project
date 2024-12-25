@@ -15,7 +15,7 @@ spec:
         service: reverseproxy
     spec:
       containers:
-        - image: hang050697/reverseproxy:v9
+        - image: toanml/udagram-reverseproxy:lastest
           name: reverseproxy
           imagePullPolicy: Always
           resources:

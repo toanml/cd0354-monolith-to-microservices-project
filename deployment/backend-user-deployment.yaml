@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-user
-        image: docker.io/toanml/udagram-api-user:v1
+        image: docker.io/toanml/udagram-api-user:lastest
         ports:
         - containerPort: 80
         resources:
@@ -22,6 +22,27 @@ spec:
             cpu: 500m
           requests:
             cpu: 200m
+        env:
+          - name: POSTGRES_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_USERNAME
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: POSTGRES_HOST
+          - name: POSTGRES_DB
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: POSTGRES_DB
 
 
 ---
