@@ -5,18 +5,18 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: backend-feed
+      service: backend-feed
   replicas: 2
   template:
     metadata:
       labels:
-        run: backend-feed
+        service: backend-feed
     spec:
       containers:
       - name: backend-feed
         image: docker.io/toanml/udagram-api-feed:lastest
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources:
           limits:
             cpu: 500m
@@ -43,17 +43,23 @@ spec:
               configMapKeyRef:
                 name: env-config
                 key: POSTGRES_DB
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    service: backend-feed
-  name: backend-feed
-spec:
-  ports:
-  - name: "8080"
-    port: 8080
-    targetPort: 8080
-  selector:
-    service: backend-feed
+          - name: URL
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: URL
+          - name: AWS_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: AWS_BUCKET
+          - name: AWS_REGION
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: AWS_REGION
+          - name: AWS_PROFILE
+            valueFrom:
+              configMapKeyRef:
+                name: env-config
+                key: AWS_PROFILE
